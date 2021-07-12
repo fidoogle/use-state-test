@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [show, setShow] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      {!show &&
+        <button data-testid="btn-show" onClick={() => setShow(true)}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Show it
+        </button>
+      }
+      {show && <div data-testid="new-div">
+        My new div
+        <button data-testid="btn-hide" onClick={() => setShow(false)}>Hide it</button>
+      </div>}
+    </>
   );
 }
 
